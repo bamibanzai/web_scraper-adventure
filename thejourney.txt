@@ -27,7 +27,7 @@ Show Code and Photos
 
 PROBLEM: most specialist Selenium code found online is written in Java
 
-SOLUTION: DuckDuckGo API content fed into Scrapy (Compatibility issues between urllib2 and urllib3) Then the fact urllib no longer exists due to security issues
-Did Not work. SUCKED GREATLY
+SOLUTION: DuckDuckGo API content fed into Scrapy and Algoria (Compatibility issues between urllib2 and urllib3) Then the fact urllib no longer exists due to security issues
+Did Not work. Had to rewrite a lot of DuckDuckGo's API. Lot of work. No yield
 
 4. CLOUD: CommonCrawl and Beautiful Soup to scrape Google Search Results for the Word 'Spartan'. FAILED DUE TO MODULE Compatibility Issues AND LACK OF KNOWLEDGE.
