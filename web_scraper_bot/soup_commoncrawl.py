@@ -5,6 +5,7 @@ import io
 import gzip
 import csv
 import codecs
+import itertools
 # import argparse
 
 #COMMON CRAWL
@@ -16,9 +17,9 @@ import codecs
 # args = vars(ap.parse_args())
 
 # domain = args['domain'] #if making to search through different domains on each run
-domain = "https://bit.ly/2T47UJi" #Google Search for the word Spartan compacted using Bitly API
+domain = "https://www.theregister.co.uk/data_centre/bofh/" #Google Search for the word Spartan compacted using Bitly API
 # list of available indices
-index_list = ["2015-35", "2016-07", "2015-48", "2015-22", "2015-18", "2015-32", "2015-27"]
+index_list = ["2018-43"] #Updated to October 2018 Index LATEST as of Nov2018
 
 # Searches the Common Crawl Index for a domain.
 
@@ -36,6 +37,8 @@ def search_domain(domain):
         response = requests.get(cc_url)
         if response.status_code == 200:
             records = response.content.splitlines()
+            records2 = itertools.islice(records, 30) #limit to 30 outputs
+
             for record in records:
                 record_list.append(json.loads(record))
             print("[*] Added %d results." % len(records))
@@ -56,11 +59,12 @@ def download_page(record):
 
     # The page is stored compressed (gzip) to save space
     # We can extract it using the GZIP library
-    raw_data = io.StringIO(resp.content)
-    f = gzip.GzipFile(fileobj=raw_data)
+    raw_data = io.BytesIO(resp.content)
+
+    # f = gzip.GzipFile(fileobj=raw_data)
 
     # What we have now is just the WARC , formatted:
-    data = f.read()
+    data = raw_data.read()
     response = ""
 
     if len(data):
@@ -77,7 +81,7 @@ link_list = []
 
 
 def extract_external_links(html_content, link_list):
-    parser = BeautifulSoup(html_content)
+    parser = BeautifulSoup(html_content, features="html5lib")
 
     links = parser.find_all("a")
 
