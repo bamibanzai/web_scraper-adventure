@@ -18,7 +18,6 @@ to run on Raspberry Pi. Automated with cron to run twice every hour
 
 	PROBLEM: As signal is constantly originating from the same location,
 		Reddit blocked the bot from receiving input fairly quickly.
-Show Code and Photos
 
 
 3. CLOUD: Selenium, Docker  
