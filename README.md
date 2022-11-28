@@ -1,4 +1,4 @@
-#Stages
+# Stages
 
 
 1. Inspired by Majestic API crawling. Wondered could I build my own rudimentary
@@ -7,7 +7,7 @@ Majestic API - 4 billion URLs/day
 	       approx. 46,296 per Second
 
 
-##EXTRA CHALLENGE : Using no APIs or Cloud Services
+## EXTRA CHALLENGE : Using no APIs or Cloud Services
 
 ###Build your own Crawler. How hard can it be??!
 
